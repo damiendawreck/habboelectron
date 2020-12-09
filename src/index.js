@@ -3,6 +3,7 @@ const path = require('path')
 var pjson = require('../package.json');
 const openAboutWindow = require('about-window').default;
 if (require('electron-squirrel-startup')) {app.quit();}
+require("./presence");
 switch (process.platform) {
     case 'win32':
         pluginName = 'pepflashplayer.dll'
