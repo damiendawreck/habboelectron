@@ -1,15 +1,15 @@
 {
   "name": "HabboElectron",
-  "productName": "Habbo Client",
+  "productName": "Fubbie",
   "settings": {
-    "hotelName": "Habbo",
-    "url": "https://holohotel.ca",
+    "hotelName": "Fubbie",
+    "url": "https://fubbie.nl",
     "useFrame": true,
     "backgroundColor": "#ccc",
-    "hideMenu": false
+    "hideMenu": true
   },
   "version": "1.0.0",
-  "description": "Habbo Hotel Desktop Application",
+  "description": "Fubbie Desktop Application",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -28,15 +28,27 @@
         "icon": "src/icon.icns"
       },
       "make_targets": {
-        "win32": ["squirrel"],
-        "darwin": ["zip", "dmg"],
-        "linux": ["deb", "rpm", "flatpak", "snap"]
-  }
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip",
+          "dmg"
+        ],
+        "linux": [
+          "deb",
+          "rpm",
+          "flatpak",
+          "snap"
+        ]
+      }
     }
   },
   "dependencies": {
     "about-window": "^1.13.0",
-    "electron-squirrel-startup": "^1.0.0"
+    "discord-rich-presence": "0.0.8",
+    "electron-squirrel-startup": "^1.0.0",
+    "keytar": "^7.2.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.39",
