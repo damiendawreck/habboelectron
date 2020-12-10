@@ -1,6 +1,6 @@
 {
   "name": "HabboElectron",
-  "productName": "Fubbie",
+  "productName": "Fubbie - Pixel away!",
   "settings": {
     "hotelName": "Fubbie",
     "url": "https://fubbie.nl",
@@ -15,7 +15,8 @@
     "start": "electron-forge start",
     "package-mac": "electron-forge package --arch=x64 --platform=darwin",
     "package-win": "electron-forge package --arch=x64 --platform=win32",
-    "make": "electron-forge make --arch=x64 --platform=darwin && electron-forge make --arch=x64 --platform=win32",
+    "make": "electron-forge make --arch=x64 --platform=darwin",
+    "make-win": "electron-forge make --arch=x64 --platform=win32",
     "publish": "electron-forge publish --arch=x64 --platform=darwin && electron-forge publish --arch=x64 --platform=win32",
     "lint": "echo \"No linting configured\""
   },
@@ -27,26 +28,33 @@
       "packagerConfig": {
         "icon": "src/icon.icns"
       },
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip",
-          "dmg"
-        ],
-        "linux": [
-          "deb",
-          "rpm",
-          "flatpak",
-          "snap"
-        ]
-      }
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin",
+            "win32"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
     }
   },
   "dependencies": {
     "about-window": "^1.13.0",
     "discord-rich-presence": "0.0.8",
+    "discord-rpc": "^3.1.4",
     "electron-squirrel-startup": "^1.0.0",
     "keytar": "^7.2.0"
   },
